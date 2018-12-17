@@ -36,7 +36,7 @@ public class SearchFunctionalityTest {
         WebElement searchResult = driver.findElement(By.className("entry"));
         String searchResultText = searchResult.getText();
 
-        System.out.println(searchResultText);
+        Assert.assertTrue(searchResultText.contains("No Results Found"), "Expected 'No Results Found', actual:" + searchResultText);
 
         driver.quit();
     }
