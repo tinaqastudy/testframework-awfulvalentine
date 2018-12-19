@@ -1,0 +1,2 @@
+public class SearchNegativeTest {
+}
