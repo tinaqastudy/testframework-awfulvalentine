@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SearchTests" verbose="1" >
+
+    <test name="PurchasePerfectWorld" >
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="PurchasePerfectWorld" />
+        </classes>
+    </test>
+
+    <test name="ChromePositiveSearch" >
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="SearchFunctionalityTest" />
+        </classes>
+    </test>
+
+    <test name="FirefoxPositiveSearch" >
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="SearchFunctionalityTest" />
+        </classes>
+    </test>
+
+    <test name="NegativeTestChrome">
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="searchWord" value="cheese"></parameter>
+        <classes>
+            <class name="SearchNegativeTest"/>
+        </classes>
+    </test>
+
+    <test name="NegativeTestFirefox">
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="searchWord" value="cheese"></parameter>
+        <classes>
+            <class name="SearchNegativeTest"/>
+        </classes>
+    </test>
+</suite>

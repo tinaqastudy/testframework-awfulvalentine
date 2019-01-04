@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="NegativeTestsSuite" verbose="1" >
+
+    <test name="NegativeTestChrome">
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="searchWord" value="cheese"></parameter>
+        <classes>
+            <class name="SearchNegativeTest"/>
+        </classes>
+    </test>
+
+    <test name="NegativeTestFirefox">
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="searchWord" value="cheese"></parameter>
+        <classes>
+            <class name="SearchNegativeTest"/>
+        </classes>
+    </test>
+</suite>
