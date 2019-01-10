@@ -3,8 +3,9 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import tests.MainTest;
 
-public class SearchNegativeTest extends MainTest  {
+public class SearchNegativeTest extends MainTest {
 
 
     @Test

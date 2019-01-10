@@ -2,10 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.MainTest;
 
 import java.util.List;
 
-public class SearchFunctionalityTest extends MainTest{
+public class SearchFunctionalityTest extends MainTest {
 
 
 

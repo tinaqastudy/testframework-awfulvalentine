@@ -1,23 +1,35 @@
+package tests;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class MainTest {
 
     protected WebDriver driver;
+
+    //TODO: refactor classname to BaseTest.
+    //TODO: add driver preparation -> maximize()
+    //TODO: add aftertest - close browser
 
     @BeforeTest
     @Parameters("browser")
@@ -44,6 +56,14 @@ public class MainTest {
         driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 
     }
+
+    @DataProvider(name = "credentials")
+    public Object[][] getData(){
+
+        String[][] purchaseCreds = getExcelData("/home/tina/IdeaProjects/testframework-awfulvalentine/src/main/resources/credentials.xlsx", "Sheet1");
+        return purchaseCreds;
+    }
+
 
     public String[][] getExcelData(String fileName, String sheetName){
         //String[] arrayExcelData;
@@ -90,10 +110,23 @@ public class MainTest {
         catch (Exception ioe) {
             ioe.printStackTrace();
         }
-
-        String[] arrayExcelData = (String[]) dataList.toArray();
+        String[] arrayExcelData = dataList.toArray(new String[dataList.size()]);
 
         return new String[][] {arrayExcelData};
+    }
+
+    public void takeScreenshot(String testName){
+
+        File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+        try {
+            String path = "/home/tina/IdeaProjects/testframework-awfulvalentine/src/test/reports/";
+            String filename = testName + "_" + new Random().nextInt(500) + ".png";
+            FileUtils.copyFile(srcFile, new File(path+filename));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

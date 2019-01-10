@@ -2,24 +2,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.MainTest;
 
 
 public class PurchasePerfectWorld extends MainTest {
 
-    @DataProvider(name = "credentials")
-    public Object[][] getData(){
-
-        String[][] purchaseCreds = getExcelData("/home/tina/IdeaProjects/testframework-awfulvalentine/src/main/resources/credentials.xlsx", "Sheet1");
-        return purchaseCreds;
-    }
-
-
-
 
     @Test(dataProvider = "credentials")
-    public void madePurchase(String testcaseNumber, String dataName, String dataCreditCard, String dataMonth, String dataYear){
+    public void makePurchase(String testcaseNumber, String dataName, String dataCreditCard, String dataMonth, String dataYear){
 
         //open main site
         //navigate to purchase forms
@@ -68,7 +59,7 @@ public class PurchasePerfectWorld extends MainTest {
         //check completion
         WebElement complete = driver.findElement(By.id("success"));
 
-        complete.isDisplayed();
+        //complete.isDisplayed();
         Assert.assertTrue(complete.isDisplayed(), "Purchase is not complete. Success message is not displayed");
 
         driver.quit();
