@@ -1,5 +1,4 @@
 # testframework-awfulvalentine
-start
 This project is about creating a testing framework for website Awful Valentine: http://awful-valentine.com. 
 It's written on Java using Maven builder. Also I use Selenium WebDriver and TestNG for developing and running tests.
 In here you can see implementation of Page Object Model pattern and OOP.
